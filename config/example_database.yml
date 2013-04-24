@@ -1,0 +1,6 @@
+development:
+    db_adapter: mysql2
+    db_host: localhost
+    db_name: status
+    db_username:
+    db_password:
