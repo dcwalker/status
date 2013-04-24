@@ -7,8 +7,6 @@ require 'sqlite3'
 require 'yaml'
 require "active_record"
 
-
-
 YAML::load(File.open('config/database.yml'))[settings.environment.to_s].each do |key, value|
   set key.to_sym, value
 end
