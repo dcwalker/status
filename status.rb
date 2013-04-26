@@ -7,20 +7,9 @@ require 'sqlite3'
 require 'yaml'
 require "active_record"
 
-YAML::load(File.open('config/database.yml'))[settings.environment.to_s].each do |key, value|
-  set key.to_sym, value
-end
-
-ActiveRecord::Base.establish_connection(
-  adapter: settings.db_adapter,
-  host: settings.db_host,
-  database: settings.db_name,
-  username: settings.db_username,
-  password: settings.db_password
-  )
-
-require File.join(File.expand_path(File.dirname(__FILE__)), "lib", 'stats')
+require File.join(File.expand_path(File.dirname(__FILE__)), "lib", 'configured_connection')
 require File.join(File.expand_path(File.dirname(__FILE__)), "lib", 'stat_data')
+require File.join(File.expand_path(File.dirname(__FILE__)), "lib", 'query')
 
 get '/flagged*' do
   db = SQLite3::Database.new "#{ENV['HOME']}/Library/Caches/com.omnigroup.OmniFocus/OmniFocusDatabase2"
@@ -40,7 +29,7 @@ get '/graph*' do
                                   :minValue => 0,
                                   :maxValue => (max_value + 10 - (max_value % 10))
                                   },
-                      :datasequences => Stats.all
+                      :datasequences => Query.find_by_data_type("line")
                       }
           }.to_json
 end

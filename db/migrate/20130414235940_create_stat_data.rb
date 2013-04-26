@@ -1,7 +1,7 @@
 class CreateStatData < ActiveRecord::Migration
   def up
     create_table :stat_data do |t|
-      t.integer :stats_id
+      t.integer :query_id
       t.integer :value
       t.timestamps
     end

@@ -1,9 +1,11 @@
 ---
-- !ruby/struct:Query
-  name: OmniFocus inbox size
-  sql: SELECT count(*) FROM Task WHERE inInbox = 1;
-  color: red
-- !ruby/struct:Query
-  name: OmniFocus Flagged Tasks
-  sql: SELECT name FROM Task WHERE effectiveFlagged = 1 and dateCompleted is null;
-  color: blue
+- :id: 1
+  :name: OmniFocus inbox size
+  :sql: SELECT count(*) FROM Task WHERE inInbox = 1;
+  :color: red
+  :data_type: count
+- :id: 2
+  :name: OmniFocus Flagged Tasks
+  :sql: SELECT name FROM Task WHERE effectiveFlagged = 1 and dateCompleted is null;
+  :color: blue
+  :data_type: list

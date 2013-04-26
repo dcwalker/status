@@ -1,0 +1,2 @@
+adapter: sqlite3
+database: 'db/statistics.sqlite3.db'
