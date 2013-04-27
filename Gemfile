@@ -1,7 +1,7 @@
 # Gemfile
 source :rubygems
 
-gem 'sinatra, '~>1.0'
+gem 'sinatra', '~>1.0'
 gem 'activerecord', '~>3.2.13'
 gem 'sinatra-activerecord', '~>1.2.2'
 gem 'sqlite3-ruby', '~>1.3.3'
