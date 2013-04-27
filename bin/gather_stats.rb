@@ -8,7 +8,7 @@ require File.join(File.expand_path(File.dirname(__FILE__)), "..", "lib", 'query'
 
 db = SQLite3::Database.new "#{ENV['HOME']}/Library/Caches/com.omnigroup.OmniFocus/OmniFocusDatabase2"
 
-queries = Query.find_all_by_type( "count" )
+queries = Query.find_all_by_data_type( "count" )
 
 queries.each do |query|
   db.execute( query.sql ) do |value|
